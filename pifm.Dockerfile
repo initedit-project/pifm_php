@@ -1,5 +1,7 @@
 
 FROM gcc:9.4 as base
+RUN apt update -y && \
+    apt-get install libsndfile1-dev -y
 WORKDIR /src
 COPY ./src .
 RUN make clean && make
