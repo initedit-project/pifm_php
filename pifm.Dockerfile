@@ -12,6 +12,6 @@ RUN apt update -y && \
 RUN echo "www-data ALL=(ALL:ALL) NOPASSWD:ALL" >> /etc/sudoers
 RUN a2enmod rewrite
 COPY ./ /var/www/html/
-COPY --from=base pi_fm_rds /var/www/html/pifm_php
+COPY --from=base pi_fm_rds /var/www/html/pi_fm_rds
 RUN chown www-data:www-data -R /var/www/html/
 RUN chmod 700 /var/www/html/uploads
