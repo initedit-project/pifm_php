@@ -4,8 +4,8 @@ $config = [
     "upload_clamp"=>true,
     "recent_count"=>20,
     "prefix_seperator"=>"-",
-    "install_dir"=>"/pifm_php",
+    "install_dir"=>"",
     "allowedFiles"=>array("wav"),
-    "radio"=>"/var/www/html/pifm_php/pi_fm_rds",
+    "radio"=>"/var/www/html/pi_fm_rds",
     "brand_name"=>"pifm_php"
 ];
