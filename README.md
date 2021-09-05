@@ -3,8 +3,12 @@
 # How to run pifm_php with docker ?
 
 ```
-docker build -t pifm_php -f pifm.Dockerfile .
+#build
+docker buildx create --use --name insecure-builder --buildkitd-flags '--allow-insecure-entitlement security.insecure'
 
+DOCKER_BUILDKIT=1 docker buildx build --allow security.insecure --load -t pifm -f pifm.Dockerfile .
+
+#run
 docker run -d -p 8001:80 --privileged pifm_php
 ```
 
@@ -24,3 +28,4 @@ In most countries, transmitting radio waves without a state-issued licence speci
 
 Refrences:
 1. https://github.com/ChristopheJacquet/PiFmRds
+2. https://github.com/moby/moby/issues/1916
