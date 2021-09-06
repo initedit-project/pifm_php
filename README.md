@@ -1,7 +1,7 @@
 ## Raspberry pi FM in PHP
 
-# How to run pifm_php with docker ?
-
+### How to run pifm_php with docker ?(May work on raspberry pi 1,2,3 - not tested)
+GPIO=4
 ```
 #build
 docker buildx create --use --name insecure-builder --buildkitd-flags '--allow-insecure-entitlement security.insecure'
@@ -12,13 +12,26 @@ DOCKER_BUILDKIT=1 docker buildx build --allow security.insecure --load -t pifm -
 docker run -d -p 8001:80 --privileged pifm_php
 ```
 
-# config.php
+### Raspberry Pi 4 (https://github.com/markondej/fm_transmitter#raspberry-pi-4)
+GPIO=21
+```
+#build
+docker buildx create --use --name insecure-builder --buildkitd-flags '--allow-insecure-entitlement security.insecure'
 
+DOCKER_BUILDKIT=1 docker buildx build --allow security.insecure --load -t fm_transmitter -f fm_transmitter.Dockerfile .
+
+#run
+docker run -d -p 8001:80 --privileged fm_transmitter
+```
+
+### config.php
+```
 "allowedFiles"=>array("wav")
 
 "radio"=>"/var/www/html/pi_fm_rds"
 
 "brand_name"=>"pifm_php"
+```
   
 # Warning and Disclaimer
 
@@ -26,6 +39,8 @@ pifm_php is an experimental program, designed only for experimentation. It is in
 
 In most countries, transmitting radio waves without a state-issued licence specific to the transmission modalities (frequency, power, bandwidth, etc.) is illegal.
 
-Refrences:
+# Refrences:
 1. https://github.com/ChristopheJacquet/PiFmRds
-2. https://github.com/moby/moby/issues/1916
+2. https://github.com/ChristopheJacquet/PiFmRds/issues/134 - Raspberrpi 4 PiFmRds issue
+3. https://github.com/markondej/fm_transmitter#raspberry-pi-4 - Raspberrpi 4 workaround
+4. https://github.com/moby/moby/issues/1916
