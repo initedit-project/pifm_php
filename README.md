@@ -21,7 +21,10 @@ docker buildx create --use --name insecure-builder --buildkitd-flags '--allow-in
 DOCKER_BUILDKIT=1 docker buildx build --allow security.insecure --load -t fm_transmitter -f fm_transmitter.Dockerfile .
 
 #run
+echo "performance"| sudo tee /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+
 docker run -d -p 8001:80 --privileged fm_transmitter
+
 ```
 
 ### config.php
