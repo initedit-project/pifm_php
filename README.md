@@ -13,7 +13,7 @@ docker run -d -p 8001:80 --privileged pifm_php
 ```
 
 ### Raspberry Pi 4 (https://github.com/markondej/fm_transmitter#raspberry-pi-4)
-GPIO=21
+GPIO=21 (Works only for freqency below 93Mhz)
 ```
 #build
 docker buildx create --use --name insecure-builder --buildkitd-flags '--allow-insecure-entitlement security.insecure'
